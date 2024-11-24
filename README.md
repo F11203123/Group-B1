@@ -30,11 +30,23 @@ During this task the EPSON robot arm is set to pick three different tokens and t
 
 ### Task 2: Token Stacking
 
+During this task the EPSON robot arm is set to stack 10 tokens and 10 blocs on top of each other alternately.
+
+  - Procedure
+    - STEP 1: Pick a block from the feeder and place it in an specific point.
+    - STEP 2: Pick a token a place it on top of the block
+    - STEP 3: Repeat the process for the remaining pieces
+
+[Task2 code](CODES/task2.txt)
+
+[Simulation](CODES/simulations.md)
+
+
 ### Task 3: Project
 
 ### I/O BOX Configuration
-  - <span style="color:rgb(0,128,0)">GREEN BUTTON</span>: Start the program
-  - <span style="color: RED;">RED BUTTON</span>: Emergency stop
-  - <span style="color: blue;">BLUE BUTTON</span>: Pause the program
-  - <span style="color: white;">WHITE BUTTON</span>: Resume program
-  - <span style="color:#FF5733">ORANGE BUTTON</span> : Go home
+  - 🟢**GREEN BUTTON**: Start the program
+  - 🔴**RED BUTTON** Emergency stop
+  - 🔵**BLUE BUTTON**: Pause the program
+  - ⚪️**WHITE BUTTON**: Resume program
+  - 🟠**ORANGE BUTTON**: Go home
