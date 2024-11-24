@@ -1,4 +1,3 @@
-
 # Introduction to Robotics Tutorial- Group B1 2024
 
 Members: 
@@ -17,5 +16,3 @@ Overview:
 # Task 2: Token Stacking
 
 # Task 3: Project
-
-
