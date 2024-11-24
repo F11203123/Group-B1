@@ -45,8 +45,14 @@ During this task the EPSON robot arm is set to stack 10 tokens and 10 blocs on t
 ### Task 3: Project
 
 ### I/O BOX Configuration
+
+The I/O Box configuration is an important tool while working with EPSON robot arms, therefore, the following configuration is set for every task of this course:
+
   - 🟢**GREEN BUTTON**: Start the program
   - 🔴**RED BUTTON** Emergency stop
   - 🔵**BLUE BUTTON**: Pause the program
   - ⚪️**WHITE BUTTON**: Resume program
   - 🟠**ORANGE BUTTON**: Go home
+
+
+[I/O BOX code](CODES/IO-BOX.txt)
