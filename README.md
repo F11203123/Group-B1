@@ -24,7 +24,7 @@ During this task the EPSON robot arm is set to pick three different tokens and t
 
 [Task1 code](CODES/task1.txt)
 
-[Simulation](CODES/simulations.md)
+[Simulation](Simulations/simulations.md)
 
 
 
@@ -39,7 +39,7 @@ During this task the EPSON robot arm is set to stack 10 tokens and 10 blocs on t
 
 [Task2 code](CODES/task2.txt)
 
-[Simulation](CODES/simulations.md)
+[Simulation](Simulations/simulations.md)
 
 
 ### Task 3: Project
