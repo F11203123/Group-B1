@@ -1,0 +1,100 @@
+Integer i
+Integer s
+Function main
+    Motor On
+    Speed 100
+    Accel 100, 100
+    SpeedS 1000
+    AccelS 10000
+    Tool 1
+
+    Go Safety
+
+    ' Procesar círculos
+    For i = 0 To 2
+    pickCircle()
+	Aligncircle()
+	PlaceCircle()
+    Next i
+
+    ' Procesar cuadrados
+    For s = 0 To 2
+    PickSquare()
+	AlignSquare()
+	PlaceSquare()
+    Next s
+
+Go Safety
+Fend
+
+Function pickCircle
+	Go Circle +Z(50)
+	Wait 0.1
+	Go Circle -Z(i * 6)
+	On 8
+	Wait 0.5
+	Go Circle +Z(50)
+	Wait 0.1
+Fend
+
+Function Aligncircle
+	
+   Go AlignC +Z(20) -Y(15)
+	Wait 0.1
+	Go AlignC -Y(15)
+	Off 8
+	Go AlignC
+	Wait 0.2
+	Go AlignC +Y(5)
+	Go AlignC +Y(5) +Z(30)
+	Go AlignC +Z(30)
+	Go AlignC
+	On 8
+	Go AlignC +Z(30)
+    
+Fend
+
+Function PlaceCircle
+    Go PLaceC +Z(20) +Y(i * 30)
+	Wait 0.1
+    Go PLaceC +Y(i * 30)
+	Off 8
+    Go PLaceC +Z(20) +Y(i * 30)
+
+Fend
+
+Function PickSquare
+	Go Square +Z(50)
+	Wait 0.1
+	Go Square -Z(s * 6)
+	On 8
+	Wait 0.5
+	Go Square +Z(50)
+	Wait 0.1
+Fend
+
+Function AlignSquare
+	Go AlignS +Z(20) -Y(15)
+	Wait 0.1
+	Go AlignS -Y(15)
+	Off 8
+	Go AlignS
+	Wait 0.2
+	Go AlignS +Y(5)
+	Go AlignS +Y(5) +X(7)
+	Go AlignS +Y(10) +X(7)
+	Go AlignS +Y(10) +X(7) +Z(30)
+	Go AlignS +Z(30)
+	Wait 0.1
+	Go AlignS
+	On 8
+	Go AlignS +Z(30)
+Fend
+
+Function PlaceSquare
+	Go placeS +Z(20) +Y(s * 30)
+	Wait 0.1
+	Go placeS +Y(s * 30)
+	Off 8
+	Go placeS +Y(s * 30) +Z(20)
+Fend

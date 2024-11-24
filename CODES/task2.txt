@@ -1,0 +1,49 @@
+Integer Piece
+Function main
+    Motor On
+    Speed 100
+    Accel 100, 100
+    SpeedS 1000
+    AccelS 10000
+    Tool 1
+    Go P0
+
+    For Piece = 0 To 9
+        grabSquare()
+        stackSquare()
+        grabToken()
+        stackToken()
+    Next Piece
+
+    Go P0
+Fend
+
+Function grabSquare()
+    Go P1 +Z(10) 
+    Go P1 -Z(Piece * 6) 
+    On 8
+    Wait 1
+    Go P1 +Z(30) 
+Fend
+
+Function stackSquare()
+    Go P2 +Z(Piece * 12 + 20) 
+    Go P2 +Z(Piece * 12) 
+    Off 8
+    Go P2 +Z(Piece * 12 + 20)  
+Fend
+
+Function grabToken()
+    Go P3 +Z(10) 
+    Go P3 -Z(Piece * 6) 
+    On 8
+    Wait 1
+    Go P3 +Z(10) 
+Fend
+
+Function stackToken()
+    Go P2 +Z(Piece * 12 + 20)  
+    Go P2 +Z(Piece * 12 + 6)  
+    Off 8
+    Go P2 +Z(Piece * 12 + 20) 
+Fend
