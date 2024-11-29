@@ -39,7 +39,7 @@ Fend
 
 Function Aligncircle
 	
-   Go AlignC +Z(20) -Y(15)
+   Go AlignC +Z(20) -Y(15) 'depends on the direction of align feature
 	Wait 0.1
 	Go AlignC -Y(15)
 	Off 8
@@ -58,7 +58,9 @@ Function PlaceCircle
     Go PLaceC +Z(20) +Y(i * 30)
 	Wait 0.1
     Go PLaceC +Y(i * 30)
+	Wait 0.5
 	Off 8
+	Wait 0.5
     Go PLaceC +Z(20) +Y(i * 30)
 
 Fend
@@ -79,8 +81,8 @@ Function AlignSquare
 	Go AlignS -Y(15)
 	Off 8
 	Go AlignS
-	Wait 0.2
-	Go AlignS +Y(5)
+	Wait 0.1
+	Go AlignS +Y(5) 'depends on the direction og align feature
 	Go AlignS +Y(5) +X(7)
 	Go AlignS +Y(10) +X(7)
 	Go AlignS +Y(10) +X(7) +Z(30)
@@ -95,6 +97,8 @@ Function PlaceSquare
 	Go placeS +Z(20) +Y(s * 30)
 	Wait 0.1
 	Go placeS +Y(s * 30)
+	Wait 0.5
 	Off 8
+	Wait 0.5
 	Go placeS +Y(s * 30) +Z(20)
 Fend
