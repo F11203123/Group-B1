@@ -1,25 +1,27 @@
 Function ioboxtsks
 
-
 Wait Sw(0) = On
-	Xqt main
-	Do While Sw(0) = On And Sw(7) = Off
-		If Sw(1) = On Then
-			Halt main
-		EndIf
-		
-		If Sw(2) = On
-			Resume main
-		EndIf
-	
-		If Sw(7) = on
-			Quit main
- 			On 12
-		EndIf
-	Loop
+Xqt main
+Do While Sw(0) = On And Sw(7) = Off
+If Sw(1) = On Then
+Halt main
+EndIf
 
-	Wait 3
-	Home
+If Sw(2) = On Then
+Resume main
+EndIf
 
-	
+If Sw(4) = On Then
+Quit main
+  On 12
+  Wait 8
+  Off 12
+EndIf
+Loop
+
+Wait 2
+Home
+Wait 2
+Off 12
+
 Fend
