@@ -48,7 +48,7 @@ For this task, we set the Epson robot arm to pick and place a specif number of t
   - Mechanical:
     - Design and 3D-printed an incline tray for six tokens with an angle of 15 degrees
     - Design and 3D-printed a token feeder that uses a piston as an actuator to move one token at a time.
-    
+
     [Incline tray CAD](CAD-FILES/Inclined-tray.jpeg)
     [Token feeder CAD](CAD-FILES/Token-feeder.jpeg)
 
@@ -75,4 +75,9 @@ The I/O Box configuration is an important tool while working with EPSON robot ar
   - 🟠**ORANGE BUTTON**: Go home
 
 
-[I/O BOX code](CODES/IO-BOX.txt)
+  [I/O BOX code](CODES/IO-BOX.txt)
+
+
+
+## Introduction to Robotics - Final Project
+
