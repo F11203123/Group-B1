@@ -1,0 +1,141 @@
+Integer i
+Integer s
+Integer count1
+Integer count2
+Function main
+
+    Motor On
+    Speed 100
+    Accel 100, 100
+    SpeedS 1000
+    AccelS 10000
+    Tool 1
+
+	Go Safety
+
+	count1 = 0
+	count2 = 0
+	Do While True
+		If Sw(2) = On Then 		'White button
+			count1 = count1 + 1
+			Wait 0.5
+		EndIf
+
+		If Sw(1) = On Then		'Blue Button
+			count2 = count2 + 1
+			Wait 0.5
+		EndIf
+
+		Do While Sw(0) = On And Sw(7) = Off
+
+			If Sw(4) = On Then
+				Quit main
+				On 12
+				Wait 4
+				Off 12
+			EndIf
+		
+			If count1 >= 0 Then
+   				For i = 0 To count1 - 1
+   					piston()
+					pickCircle()
+					Aligncircle()
+					PlaceCircle()
+				Next i
+				count1 = 0
+			EndIf
+
+			If count2 >= 0 Then
+   				For s = 0 To count2 - 1
+					piston()
+					pickCircle2()
+					Aligncircle2()
+					PlaceCircle2()
+				Next s
+				count2 = 0
+			EndIf
+			Go safety
+		Loop
+	Loop
+	
+	Off 12
+Fend
+
+
+Function pickCircle
+	Go Circle +Z(50)
+	Wait 0.1
+	Go Circle
+	On 8
+	Wait 0.5
+	Go Circle +Z(50)
+	Wait 0.1
+Fend
+
+Function Aligncircle
+	
+   Go AlignC +Z(20) -Y(15)  'depends on the direction of align feature
+	Wait 0.1
+	Go AlignC -Y(15)
+	Off 8
+	Go AlignC
+	Wait 0.2
+	Go AlignC +Y(5)
+	Go AlignC +Y(5) +Z(30)
+	Go AlignC +Z(30)
+	Go AlignC
+	On 8
+	Go AlignC +Z(30)
+    
+Fend
+
+Function PlaceCircle
+    Go PLaceC -Z(40) +Y(i * 30) /1
+	Wait 0.1
+    Go PLaceC +Y(i * 30) /1
+	Wait 0.3
+	Off 8
+	Wait 0.3
+    Go PLaceC -Z(40) +Y(i * 30) /1
+
+Fend
+Function pickCircle2
+	Go Circle +Z(50)
+	Wait 0.1
+	Go Circle
+	On 8
+	Wait 0.5
+	Go Circle +Z(50)
+	Wait 0.1
+Fend
+Function Aligncircle2
+	
+   Go AlignC +Z(20) -Y(15)  'depends on the direction of align feature
+	Wait 0.1
+	Go AlignC -Y(15)
+	Off 8
+	Go AlignC
+	Wait 0.2
+	Go AlignC +Y(5)
+	Go AlignC +Y(5) +Z(30)
+	Go AlignC +Z(30)
+	Go AlignC
+	On 8
+	Go AlignC +Z(30)
+    
+Fend
+Function PlaceCircle2
+    Go PLaceC2 -Z(40) +Y(s * 30) /1
+	Wait 0.1
+    Go PLaceC2 +Y(s * 30) /1
+	Wait 0.3
+	Off 8
+	Wait 0.3
+    Go PLaceC2 -Z(40) +Y(s * 30) /1
+Fend
+
+Function piston
+	On 9
+	Wait 0.6
+	Off 9
+Fend
