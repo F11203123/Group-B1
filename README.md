@@ -48,16 +48,19 @@ For this task, we set the Epson robot arm to pick and place a specif number of t
   - Mechanical:
     - Design and 3D-printed an incline tray for six tokens with an angle of 15 degrees
     - Design and 3D-printed a token feeder that uses a piston as an actuator to move one token at a time.
+    
     [Incline tray CAD](CAD-FILES/Inclined-tray.jpeg)
     [Token feeder CAD](CAD-FILES/Token-feeder.jpeg)
 
   - Electrical:
     - HMI design for the task and motion of the robot arm.
     - Wiring of the counter system and I/O box.
+
     [HMI manual mode](HMI/HMI-2.jpeg)
     [HMI auto mode](HMI/HMI-1.jpeg)
   - Programming:
     - Focus on the reading of inputs (number of times the buttons were pressed) to determine the number and positions of the tokens to pick and place. 
+
     [Task3 code](CODES/task3.txt)
 
 
