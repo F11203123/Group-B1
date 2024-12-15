@@ -90,10 +90,9 @@ This project explores the simulation of a four-wheel mecanum mobile robot using 
       [Robot drawings](FINAL-PROJECT/DRAWINGS)
 
       Isometric view:
+      ![alt text](image.png)
 
       
-      ![alt text](image-1.png)
-
 
   - Powertrain:
       Focuses on three main aspecs: motor requirenments, specifications and gearbox specifications.
