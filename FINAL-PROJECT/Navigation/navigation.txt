@@ -1,0 +1,114 @@
+%% ENVIRONMENT MOBILE ROBOT
+% Factory 1
+factory = binaryOccupancyMap(50,50,1); %50x50 m factory
+x1 = (10:20)';
+x2 = (30:40)';
+
+y1 = 10*ones(1,11)';
+y2= 11*ones(1,11)';
+y3 = 25*ones(1,11)';
+y4 = 26*ones(1,11)';
+y5 = 40*ones(1,11)';
+y6 = 41*ones(1,11)';
+
+% Container 1
+setOccupancy(factory, [x1 y1], ones(11,1))
+setOccupancy(factory, [x1 y2], ones(11,1))
+% Container 2
+setOccupancy(factory, [x2 y1], ones(11,1))
+setOccupancy(factory, [x2 y2], ones(11,1))
+% Container 3
+setOccupancy(factory, [x1 y3], ones(11,1))
+setOccupancy(factory, [x1 y4], ones(11,1))
+% Container 4
+setOccupancy(factory, [x2 y3], ones(11,1))
+setOccupancy(factory, [x2 y4], ones(11,1))
+% Container 5
+setOccupancy(factory, [x1 y5], ones(11,1))
+setOccupancy(factory, [x1 y6], ones(11,1))
+% Container 6
+setOccupancy(factory, [x2 y5], ones(11,1))
+setOccupancy(factory, [x2 y6], ones(11,1))
+
+figure
+show(factory)
+hold on
+
+%% Path
+path = [25, 25; 25, 45; 5, 45; 5, 32.5; 25, 32.5; 45, 32.5;
+     45, 45; 25, 45; 25, 17.5; 45, 17.5; 45, 5; 25, 5; 5, 5;
+     5, 17.5; 25, 17.5; 25, 5; 5, 5; 5, 45; 45, 45; 45, 5; 25, 5]; % List of waypoints
+
+%% Parameters
+% Controller gains
+Kp_linear = 0.5; % Gain for linear velocity
+Kp_angular = 0; % Gain for angular velocity
+
+% Robot kinematics parameters
+R = 0.06;   % Wheel radius (m)
+L = 0.128;  % Half the length of the robot (m)
+W = 0.265;  % Half the width of the robot (m)
+
+% Maximum wheel speed
+maxWheelSpeed = 33; % Maximum allowable wheel speed (rad/s)
+
+% Integration time step
+dt = 0.5; % Time step for position updates (seconds)
+
+tolerance = 0.5; % Distance threshold for switching waypoints
+
+%% Initial State
+currentPos = [25, 25]; % Robot's starting position [x, y]
+currentTheta = 0;      % Robot's initial orientation (radians)
+
+
+
+%% Navigation through the path
+for i = 1:size(path, 1) - 1
+    target = path(i + 1, :); % Next waypoint
+    while norm(target - currentPos) > tolerance
+        % Compute errors
+        errorPos = target - currentPos;
+        distance = norm(errorPos);
+        angleToTarget = atan2(errorPos(2), errorPos(1));
+        errorTheta = angleToTarget - currentTheta;
+        
+        % Normalize the angle error to [-pi, pi]
+        errorTheta = mod(errorTheta + pi, 2 * pi) - pi;
+
+        % Compute desired velocities
+        Vx = Kp_linear * distance * cos(errorTheta);
+        Vy = Kp_linear * distance * sin(errorTheta);
+        omega = Kp_angular * errorTheta;
+
+        % Compute wheel speeds
+        A = [1, -1, -(L + W);
+             1,  1,  (L + W);
+             1,  1, -(L + W);
+             1, -1,  (L + W)];
+        wheelSpeeds = (1 / R) * A * [Vx; Vy; omega];
+
+        % Limit wheel speeds to the maximum allowable value
+        maxComputedSpeed = max(abs(wheelSpeeds));
+        if maxComputedSpeed > maxWheelSpeed
+            wheelSpeeds = (wheelSpeeds / maxComputedSpeed) * maxWheelSpeed;
+        end
+        disp(wheelSpeeds)
+        % Compute robot velocities from wheel speeds
+        robotVelocities = (R / 4) * [1,  1,  1,  1;
+                                     -1,  1,  1, -1;
+                                     -1,  1, -1,  1] * wheelSpeeds;
+
+        % Update robot state
+        currentPos = currentPos + [robotVelocities(1), robotVelocities(2)] * dt;
+        currentTheta = currentTheta + robotVelocities(3) * dt;
+        currentTheta = mod(currentTheta + pi, 2 * pi) - pi; % Normalize orientation
+
+        % Visualization
+        plot(currentPos(1), currentPos(2), 'bo'); % Robot's current position
+        quiver(currentPos(1), currentPos(2), cos(currentTheta), sin(currentTheta), 0.5, 'r'); % Orientation
+        pause(dt);
+    end
+end
+
+hold off;

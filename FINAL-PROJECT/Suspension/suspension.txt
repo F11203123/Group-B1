@@ -1,0 +1,60 @@
+
+% Parámetros del sistema
+Ms = 22;         % Masa suspendida [kg]
+Mu = 17.48;      % Masa no suspendida [kg]
+Ks = 200.39;    % Constante del resorte [N/m] 200
+Cs = 110.2;      % Constante del amortiguador [Ns/m] 50
+Kt = 350;       % Constante del resorte de interacción con el terreno [N/m]
+
+% Parámetros iniciales
+Zs0 = 0.016;         % Posición inicial de la masa suspendida [m]
+Zu0 = 0;         % Posición inicial de la masa no suspendida [m]
+Zs_v0 = 4.95;       % Velocidad inicial de la masa suspendida [m/s]
+Zu_v0 = 4.95;       % Velocidad inicial de la masa no suspendida [m/s]
+
+% Función del terreno r(t), por ejemplo, una señal sinusoidal
+t_max = 25;      % Tiempo máximo de simulación [s]
+r_freq = 1;      % Frecuencia de las irregularidades del terreno [Hz]
+r_amplitude = 0.05; % Amplitud del terreno (5 cm) [m]
+
+% Definición de r(t)
+r = @(t) r_amplitude * sin(2*pi*r_freq*t); % Función sinusoidal
+
+% Ecuaciones de movimiento (con r(t) en la masa no suspendida)
+% Sistema de ecuaciones diferenciales de segundo orden
+ode = @(t, y) [
+    y(2); % Zs' (velocidad de masa suspendida)
+    (-Ks * (y(1) - y(3)) - Cs * (y(2) - y(4)) + Ms * r(t)) / Ms; % Zs''
+    y(4); % Zu' (velocidad de masa no suspendida)
+    (Ks * (y(1) - y(3)) + Cs * (y(2) - y(4)) - Kt * (y(3) - r(t))) / Mu; % Zu''
+];
+
+% Condiciones iniciales
+y0 = [Zs0; Zs_v0; Zu0; Zu_v0];
+
+% Resolver el sistema de ecuaciones diferenciales
+[t, y] = ode45(ode, [0 t_max], y0);
+
+% Extraer los desplazamientos y velocidades
+Zs = y(:, 1);  % Desplazamiento de la masa suspendida
+Zu = y(:, 3);  % Desplazamiento de la masa no suspendida
+
+% Calcular las fuerzas
+Fs = Ks * (Zs - Zu) + Cs * (y(:, 2) - y(:, 4));  % Fuerza en la masa suspendida
+Fu = Ks * (Zs - Zu) + Cs * (y(:, 2) - y(:, 4)) - Kt * (Zu - r(t));  % Fuerza en la masa no suspendida
+
+% Graficar los resultados
+figure;
+subplot(2, 1, 1);
+plot(t, Zs, 'b', t, Zu, 'r');
+xlabel('Time [s]');
+ylabel('Displacement [m]');
+legend('Suspended Mass (Zs)', 'Not-Suspended Mass (Zu)');
+title('Displacement vs. Time');
+
+subplot(2, 1, 2);
+plot(t, Fs, 'g', t, Fu, 'm');
+xlabel('Time [s]');
+ylabel('Force [N]');
+legend('Force in Suspended Mass (Fs)', 'Force in Not-Suspended Mass (Fu)');
+title('Force vs. Time');
