@@ -75,9 +75,33 @@ The I/O Box configuration is an important tool while working with EPSON robot ar
   - 🟠**ORANGE BUTTON**: Go home
 
 
-  [I/O BOX code](CODES/IO-BOX.txt)
+  [I/O BOX code](CODES/IO-BOX.txt) [I/O BOX diagram](CODES/IO-BOX.jpeg) 
 
 
 
 ## Introduction to Robotics - Final Project
 
+This project explores the simulation of a four-wheel mecanum mobile robot using MATLAB's Mobile Robot Toolbox. Mecanum robots are valued for their omnidirectional movement, making them ideal for navigating complex environments. The focus is on designing a control system for path planning and collision avoidance, demonstrating the robot's versatility and potential in real-world applications.
+
+  - Robot design:
+      The design of the robot is centered on the mecanum wheels, the suspension system and the camara base. Below you can find all the CAD drawings
+
+      [Robot drawings](FINAL-PROJECT/DRAWINGS)
+
+
+  - Powertrain:
+      Focuses on three main aspecs: motor requirenments, specifications and gearbox specifications.
+  
+      [Motor and Gear requirenment and specifications](FINAL-PROJECT/Powertrain)
+
+
+  - Suspension simulation:
+      Uses matlab to simulate the robot's ability to mitigate the effects of the surface and loads using a suspension system.
+
+      [Suspension system code and simulation](FINAL-PROJECT/Suspension)
+
+
+  - Navigation:
+      The path and kinematics required for the robot to fullfill and adapt to real world environments depending on the specif job we want it to perform.
+
+      [Navigation and kinematics](FINAL-PROJECT/Navigation)
