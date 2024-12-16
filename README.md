@@ -87,7 +87,7 @@ This project explores the simulation of a four-wheel mecanum mobile robot using 
       The design of the robot is centered on the mecanum wheels, the suspension system and the camara base. Below you can find all the CAD drawings
 
 
-      [Robot drawings](FINAL-PROJECT/DRAWINGS)
+      [Robot design](FINAL-PROJECT/Mechanical)
 
       Isometric view:
 
