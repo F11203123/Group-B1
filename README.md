@@ -83,10 +83,32 @@ The I/O Box configuration is an important tool while working with EPSON robot ar
 
 This project explores the simulation of a four-wheel mecanum mobile robot using MATLAB's Mobile Robot Toolbox. Mecanum robots are valued for their omnidirectional movement, making them ideal for navigating complex environments. The focus is on designing a control system for path planning and collision avoidance, demonstrating the robot's versatility and potential in real-world applications.
 
-  - Robot design:
+
+# Objectives
+
+The main objective of this project is to develop an autonomous Mecanum 4WD mobile robot specifically designed for surveillance in industrial environments, such as factories and warehouses where the range of vision of a common CCTV camera is blocked, thus, enhancing Industrial security with real-time communication.
+
+
+# APPLICATIONS
+
+  - Autonomous Industrial Surveillance.
+
+  - Efficient Navigation in Confined Spaces.
+
+  -  Real-Time Alerts and Reporting.
+
+  - Cost-Effective Security Solution.
+
+  - Adaptability for Broader Use Cases.
+
+  - Environmental Safety Checks.
+
+This ensures immediate detection and response to potential security threats, equipment malfunctions, or environmental anomalies, significantly improving the overall safety and security of industrial facilities during non-operational hours, reducing the need for human intervention and ensuring continuous monitoring.
+ 
+ 
+# Robot design:
       The design of the robot is centered on the mecanum wheels, the suspension system and the camara base. Below you can find all the CAD drawings
-
-
+    
       [Robot design](FINAL-PROJECT/Mechanical)
 
       Isometric view:
@@ -96,19 +118,19 @@ This project explores the simulation of a four-wheel mecanum mobile robot using 
 
       
 
-  - Powertrain:
+# Powertrain:
       Focuses on three main aspecs: motor requirenments, specifications and gearbox specifications.
   
       [Motor and Gear requirenment and specifications](FINAL-PROJECT/Powertrain)
 
 
-  - Suspension simulation:
+# Suspension simulation:
       Uses matlab to simulate the robot's ability to mitigate the effects of the surface and loads using a suspension system.
 
       [Suspension system code and simulation](FINAL-PROJECT/Suspension)
 
 
-  - Navigation:
+# Navigation:
       The path and kinematics required for the robot to fullfill and adapt to real world environments depending on the specif job we want it to perform.
 
       [Navigation and kinematics](FINAL-PROJECT/Navigation)
