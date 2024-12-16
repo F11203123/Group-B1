@@ -107,32 +107,32 @@ This ensures immediate detection and response to potential security threats, equ
  
  
 # Robot design:
-      The design of the robot is centered on the mecanum wheels, the suspension system and the camara base. Below you can find all the CAD drawings
+ The design of the robot is centered on the mecanum wheels, the suspension system and the camara base. Below you can find all the CAD drawings
     
-      [Robot design](FINAL-PROJECT/Mechanical)
+[Robot design](FINAL-PROJECT/Mechanical)
 
-      Isometric view:
+Isometric view:
 
 
-      ![alt text](image.png)
+  ![alt text](image.png)
 
       
 
 # Powertrain:
-      Focuses on three main aspecs: motor requirenments, specifications and gearbox specifications.
+ Focuses on three main aspecs: motor requirenments, specifications and gearbox specifications.
   
-      [Motor and Gear requirenment and specifications](FINAL-PROJECT/Powertrain)
+ [Motor and Gear requirenment and specifications](FINAL-PROJECT/Powertrain)
 
 
 # Suspension simulation:
-      Uses matlab to simulate the robot's ability to mitigate the effects of the surface and loads using a suspension system.
+ Uses matlab to simulate the robot's ability to mitigate the effects of the surface and loads using a suspension system.
 
-      [Suspension system code and simulation](FINAL-PROJECT/Suspension)
+ [Suspension system code and simulation](FINAL-PROJECT/Suspension)
 
 
 # Navigation:
-      The path and kinematics required for the robot to fullfill and adapt to real world environments depending on the specif job we want it to perform.
+ The path and kinematics required for the robot to fullfill and adapt to real world environments depending on the specif job we want it to perform.
 
-      [Navigation and kinematics](FINAL-PROJECT/Navigation)
+ [Navigation and kinematics](FINAL-PROJECT/Navigation)
 
 [def]: image.png
